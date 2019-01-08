@@ -1,0 +1,7 @@
+/* pages/outdoor/outdoor-future/outdoor-future.wxss */
+
+canvas {
+    margin-top: 50rpx;
+    height: 500px;
+    width: 100%;
+}

@@ -1,0 +1,4 @@
+<!--pages/outdoor/outdoor-future/outdoor-future.wxml-->
+<!--<text>pages/outdoor/outdoor-future/outdoor-future.wxml</text>-->
+
+<canvas canvas-id="areaCanvas" disable-scroll="true" class="canvas"></canvas>

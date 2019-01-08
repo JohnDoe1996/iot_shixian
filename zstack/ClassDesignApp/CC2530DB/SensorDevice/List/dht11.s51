@@ -1,0 +1,1295 @@
+///////////////////////////////////////////////////////////////////////////////
+//
+// IAR C/C++ Compiler V10.10.1.4655 for 8051              12/Jun/2018  00:58:28
+// Copyright 2004-2017 IAR Systems AB.
+// Standalone license - IAR Embedded Workbench for 8051
+//
+//    Core               =  plain
+//    Code model         =  banked
+//    Data model         =  large
+//    Calling convention =  xdata reentrant
+//    Constant location  =  data_rom
+//    Dptr setup         =  1,16
+//                          
+//    Source file        =  
+//        D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\Source\dht11.c
+//    Command line       =  
+//        -f C:\Users\John_Doe\AppData\Local\Temp\EW8344.tmp ("D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\Source\dht11.c"
+//        -D NWK_AUTO_POLL -D ZTOOL_P1 -D RFD_RCVC_ALWAYS_ON=TRUE -D xMT_TASK
+//        -D xMT_SYS_FUNC -D MT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D
+//        xPOWER_SAVING -lC "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\List"
+//        -lA "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\List"
+//        --diag_suppress Pe001,Pa010 -o "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\Obj"
+//        -e --debug --core=plain --dptr=16,1 --data_model=large
+//        --code_model=banked --calling_convention=xdata_reentrant
+//        --place_constants=data_rom --nr_virtual_regs 8 -f "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg"
+//        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+//        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+//        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+//        -DDEFAULT_CHANLIST=0x07FFF800 -DZDAPP_CONFIG_PAN_ID=0x0127
+//        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+//        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+//        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+//        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+//        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+//        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+//        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+//        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+//        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+//        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+//        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+//        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+//        -DREJOIN_POLL_RATE=440) -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\Source\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\ZMain\TI2530DB\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\hal\include\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\include\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mt\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\osal\include\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\af\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\zmac\"
+//        -I "D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+//        -Ohz --require_prototypes --no_code_motion)
+//    Locale             =  Chinese (Simplified)_China.936
+//    List file          =  
+//        D:\Texas
+//        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\List\dht11.s51
+//
+///////////////////////////////////////////////////////////////////////////////
+
+        NAME dht11
+
+        RTMODEL "__SystemLibrary", "CLib"
+        RTMODEL "__calling_convention", "xdata_reentrant"
+        RTMODEL "__code_model", "banked"
+        RTMODEL "__core", "plain"
+        RTMODEL "__data_model", "large"
+        RTMODEL "__dptr_size", "16"
+        RTMODEL "__extended_stack", "disabled"
+        RTMODEL "__location_for_constants", "data"
+        RTMODEL "__number_of_dptrs", "1"
+        RTMODEL "__register_banks", "*"
+        RTMODEL "__rt_version", "1"
+
+        RSEG DOVERLAY:DATA:NOROOT(0)
+        RSEG IOVERLAY:IDATA:NOROOT(0)
+        RSEG ISTACK:IDATA:NOROOT(0)
+        RSEG PSTACK:XDATA:NOROOT(0)
+        RSEG XSTACK:XDATA:NOROOT(0)
+
+        EXTERN ?V0
+        EXTERN ?V1
+        EXTERN ?BANKED_ENTER_XDATA
+        EXTERN ?BANKED_LEAVE_XDATA
+        EXTERN ?BDISPATCH
+        EXTERN ?BRET
+        EXTERN __INIT_XDATA_Z
+
+        PUBLIC `??Delay_10us::?relay`
+        FUNCTION `??Delay_10us::?relay`,0203H
+        PUBLIC `??Delay_ms::?relay`
+        FUNCTION `??Delay_ms::?relay`,0203H
+        PUBLIC `??Delay_us::?relay`
+        FUNCTION `??Delay_us::?relay`,0203H
+        PUBLIC `??Read_Byte::?relay`
+        FUNCTION `??Read_Byte::?relay`,0203H
+        PUBLIC `??Read_DHT11::?relay`
+        FUNCTION `??Read_DHT11::?relay`,0203H
+        PUBLIC `??getHumiture::?relay`
+        FUNCTION `??getHumiture::?relay`,0203H
+        PUBLIC Delay_10us
+        FUNCTION Delay_10us,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC Delay_ms
+        FUNCTION Delay_ms,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Delay_us
+        FUNCTION Delay_us,021203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC Overtime_counter
+        PUBWEAK P0DIR
+        PUBLIC RH_data_H
+        PUBLIC RH_data_H_temp
+        PUBLIC RH_data_L
+        PUBLIC RH_data_L_temp
+        PUBLIC Read_Byte
+        FUNCTION Read_Byte,021203H
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME XSTACK, 9, STACK
+        PUBLIC Read_DHT11
+        FUNCTION Read_DHT11,021203H
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        LOCFRAME ISTACK, 2, STACK
+        PUBLIC T_data_H
+        PUBLIC T_data_H_temp
+        PUBLIC T_data_L
+        PUBLIC T_data_L_temp
+        PUBWEAK _A_P0
+        PUBLIC bit_value
+        PUBLIC checkdata
+        PUBLIC checkdata_temp
+        PUBLIC comdata
+        PUBLIC getHumiture
+        FUNCTION getHumiture,0a1203H
+        ARGFRAME XSTACK, 0, STACK
+        LOCFRAME ISTACK, 1, STACK
+        LOCFRAME XSTACK, 10, STACK
+        PUBLIC str
+        
+          CFI Names cfiNames0
+          CFI StackFrame CFA_SP SP IDATA
+          CFI StackFrame CFA_PSP16 PSP16 XDATA
+          CFI StackFrame CFA_XSP16 XSP16 XDATA
+          CFI StaticOverlayFrame CFA_IOVERLAY IOVERLAY
+          CFI StaticOverlayFrame CFA_DOVERLAY DOVERLAY
+          CFI Resource `PSW.CY`:1, `B.BR0`:1, `B.BR1`:1, `B.BR2`:1, `B.BR3`:1
+          CFI Resource `B.BR4`:1, `B.BR5`:1, `B.BR6`:1, `B.BR7`:1, `VB.BR8`:1
+          CFI Resource `VB.BR9`:1, `VB.BR10`:1, `VB.BR11`:1, `VB.BR12`:1
+          CFI Resource `VB.BR13`:1, `VB.BR14`:1, `VB.BR15`:1, VB:8, B:8, A:8
+          CFI Resource PSW:8, DPL0:8, DPH0:8, R0:8, R1:8, R2:8, R3:8, R4:8, R5:8
+          CFI Resource R6:8, R7:8, V0:8, V1:8, V2:8, V3:8, V4:8, V5:8, V6:8, V7:8
+          CFI Resource SP:8, PSPH:8, PSPL:8, PSP16:16, XSPH:8, XSPL:8, XSP16:16
+          CFI VirtualResource ?RET:24
+          CFI Resource ?BRET_EXT:8
+          CFI VirtualResource ?RET_HIGH:8, ?RET_LOW:8
+          CFI ResourceParts PSP16 PSPH, PSPL
+          CFI ResourceParts XSP16 XSPH, XSPL
+          CFI ResourceParts ?RET ?BRET_EXT, ?RET_HIGH, ?RET_LOW
+          CFI EndNames cfiNames0
+        
+          CFI Common cfiCommon0 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-3
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B Undefined
+          CFI A Undefined
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 Undefined
+          CFI R1 Undefined
+          CFI R2 Undefined
+          CFI R3 Undefined
+          CFI R4 Undefined
+          CFI R5 Undefined
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT Frame(CFA_SP, 3)
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon0
+        
+        
+          CFI Common cfiCommon1 Using cfiNames0
+          CFI CodeAlign 1
+          CFI DataAlign -1
+          CFI ReturnAddress ?RET CODE
+          CFI CFA_DOVERLAY Used
+          CFI CFA_IOVERLAY Used
+          CFI CFA_SP SP+-2
+          CFI CFA_PSP16 PSP16+0
+          CFI CFA_XSP16 XSP16+0
+          CFI `PSW.CY` SameValue
+          CFI `B.BR0` SameValue
+          CFI `B.BR1` SameValue
+          CFI `B.BR2` SameValue
+          CFI `B.BR3` SameValue
+          CFI `B.BR4` SameValue
+          CFI `B.BR5` SameValue
+          CFI `B.BR6` SameValue
+          CFI `B.BR7` SameValue
+          CFI `VB.BR8` SameValue
+          CFI `VB.BR9` SameValue
+          CFI `VB.BR10` SameValue
+          CFI `VB.BR11` SameValue
+          CFI `VB.BR12` SameValue
+          CFI `VB.BR13` SameValue
+          CFI `VB.BR14` SameValue
+          CFI `VB.BR15` SameValue
+          CFI VB SameValue
+          CFI B SameValue
+          CFI A SameValue
+          CFI PSW SameValue
+          CFI DPL0 SameValue
+          CFI DPH0 SameValue
+          CFI R0 SameValue
+          CFI R1 SameValue
+          CFI R2 SameValue
+          CFI R3 SameValue
+          CFI R4 SameValue
+          CFI R5 SameValue
+          CFI R6 SameValue
+          CFI R7 SameValue
+          CFI V0 SameValue
+          CFI V1 SameValue
+          CFI V2 SameValue
+          CFI V3 SameValue
+          CFI V4 SameValue
+          CFI V5 SameValue
+          CFI V6 SameValue
+          CFI V7 SameValue
+          CFI PSPH Undefined
+          CFI PSPL Undefined
+          CFI XSPH Undefined
+          CFI XSPL Undefined
+          CFI ?RET Concat
+          CFI ?BRET_EXT SameValue
+          CFI ?RET_HIGH Frame(CFA_SP, 2)
+          CFI ?RET_LOW Frame(CFA_SP, 1)
+          CFI EndCommon cfiCommon1
+        
+Onboard_wait        SYMBOL "Onboard_wait"
+`??Onboard_wait::?relay` SYMBOL "?relay", Onboard_wait
+Delay_10us          SYMBOL "Delay_10us"
+`??Delay_10us::?relay` SYMBOL "?relay", Delay_10us
+Delay_ms            SYMBOL "Delay_ms"
+`??Delay_ms::?relay` SYMBOL "?relay", Delay_ms
+Delay_us            SYMBOL "Delay_us"
+`??Delay_us::?relay` SYMBOL "?relay", Delay_us
+Read_Byte           SYMBOL "Read_Byte"
+`??Read_Byte::?relay` SYMBOL "?relay", Read_Byte
+Read_DHT11          SYMBOL "Read_DHT11"
+`??Read_DHT11::?relay` SYMBOL "?relay", Read_DHT11
+getHumiture         SYMBOL "getHumiture"
+`??getHumiture::?relay` SYMBOL "?relay", getHumiture
+
+        EXTERN `??Onboard_wait::?relay`
+        FUNCTION `??Onboard_wait::?relay`,00H
+        EXTERN Onboard_wait
+        FUNCTION Onboard_wait,0202H
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+
+// D:\Texas Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\Source\dht11.c
+//    1 #include "ioCC2530.h"
+
+        ASEGN SFR_AN:DATA:NOROOT,080H
+// union <unnamed> volatile __sfr _A_P0
+_A_P0:
+        DATA8
+        DS 1
+
+        ASEGN SFR_AN:DATA:NOROOT,0fdH
+// unsigned char volatile __sfr P0DIR
+P0DIR:
+        DATA8
+        DS 1
+//    2 #include <stdio.h>
+//    3 #include "dht11.h"
+//    4 #include <zcomdef.h>
+//    5 
+//    6 #define uchar unsigned char 
+//    7 #define uint unsigned int
+//    8 
+//    9 #define  DHT11_DATA  P0_4
+//   10 
+//   11 /*****************全局变量的定义******************/
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   12 uchar  Overtime_counter;  //判断等待是否超时的计数器。利用uchar型的数值范围进行自动延时控制（时长由初值决定），并判断是否超时
+Overtime_counter:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   13 uchar  bit_value;          //从DATA总线上读到的位值
+bit_value:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   14 uchar  T_data_H=0, T_data_L=0, RH_data_H, RH_data_L, checkdata;//校验过的温度高8位,温度低8位,湿度高8位,湿度低8位,校验和8位
+T_data_H:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+T_data_L:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+RH_data_H:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+RH_data_L:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+checkdata:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   15 uchar  T_data_H_temp, T_data_L_temp, RH_data_H_temp, RH_data_L_temp, checkdata_temp;//未经校验的数据
+T_data_H_temp:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+T_data_L_temp:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+RH_data_H_temp:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+RH_data_L_temp:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+checkdata_temp:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA8
+//   16 uchar  comdata;            //从DHT11读取的一个字节的数据
+comdata:
+        DS 1
+        REQUIRE __INIT_XDATA_Z
+//   17 
+//   18 // void Delay(uint);
+//   19 void Delay_us(void); //1 us延时
+//   20 void Delay_10us(void); //10 us延时
+//   21 void Delay_ms(uint Time);//n ms延时
+//   22 
+//   23 void InitialAD(void);
+//   24 void Read_Byte(void);
+//   25 void Read_DHT11(void);
+
+        RSEG XDATA_Z:XDATA:NOROOT(0)
+        DATA16
+//   26 uchar  str[2];
+str:
+        DS 2
+        REQUIRE __INIT_XDATA_Z
+//   27 
+//   28 /*****************延时函数******************/
+//   29 // static void Delay(unsigned int n)
+//   30 // {
+//   31 // 	unsigned int i;
+//   32 // 	for(i = 0; i < n; i++);
+//   33 //         for(i = 0; i < n; i++);
+//   34 //         for(i = 0; i < n; i++);
+//   35 //         for(i = 0; i < n; i++);
+//   36 //         for(i = 0; i < n; i++);
+//   37 // }
+//   38 
+//   39 // static void Delay_10us(unsigned char n)
+//   40 // {
+//   41 // 	for( ; n > 0; n--);
+//   42 // }
+//   43 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   44 void Delay_us() //1 us延时
+Delay_us:
+          CFI Block cfiBlock0 Using cfiCommon0
+          CFI Function Delay_us
+        CODE
+//   45 {
+        FUNCALL Delay_us, Onboard_wait
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH      DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   46    MicroWait(1);   
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0x1
+          CFI EndBlock cfiBlock0
+        REQUIRE ?Subroutine0
+        ; // Fall through to label ?Subroutine0
+//   47 }
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+?Subroutine0:
+          CFI Block cfiBlock1 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+-5
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+          CFI EndBlock cfiBlock1
+        REQUIRE ??Subroutine3_0
+        ; // Fall through to label ??Subroutine3_0
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+??Subroutine3_0:
+          CFI Block cfiBlock2 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+-5
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI DPH0 Frame(CFA_SP, 5)
+        POP       DPH
+          CFI CFA_SP SP+-4
+          CFI DPH0 SameValue
+        POP       DPL
+          CFI CFA_SP SP+-3
+          CFI DPL0 SameValue
+        LJMP      ?BRET
+          CFI EndBlock cfiBlock2
+//   48 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   49 void Delay_10us() //10 us延时
+Delay_10us:
+          CFI Block cfiBlock3 Using cfiCommon0
+          CFI Function Delay_10us
+        CODE
+//   50 {
+        FUNCALL Delay_10us, Onboard_wait
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH      DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   51   MicroWait(10);
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        SJMP      ?Subroutine0
+//   52 }
+          CFI EndBlock cfiBlock3
+//   53 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   54 void Delay_ms(uint Time)//n ms延时
+Delay_ms:
+          CFI Block cfiBlock4 Using cfiCommon0
+          CFI Function Delay_ms
+        CODE
+//   55 {
+        FUNCALL Delay_ms, Onboard_wait
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+        MOV       A,R2
+        MOV       R6,A
+        MOV       A,R3
+        MOV       R7,A
+//   56   unsigned char i;
+//   57   while(Time--)
+??Delay_ms_0:
+        MOV       A,R6
+        MOV       R0,A
+        MOV       A,R7
+        MOV       R1,A
+        MOV       A,R0
+        ADD       A,#-0x1
+        DEC       R6
+        MOV       A,R1
+        ADDC      A,#-0x1
+        MOV       R7,A
+        MOV       A,R0
+        ORL       A,R1
+        JZ        ??Delay_ms_1
+//   58   {
+//   59     for(i=0;i<100;i++)
+        MOV       ?V0,#0x64
+//   60      Delay_10us();
+??Delay_ms_2:
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+        DEC       ?V0
+        MOV       A,?V0
+        JZ        ??Delay_ms_0
+        SJMP      ??Delay_ms_2
+//   61   }
+//   62 }
+??Delay_ms_1:
+          CFI EndBlock cfiBlock4
+        REQUIRE ?Subroutine1
+        ; // Fall through to label ?Subroutine1
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+?Subroutine1:
+          CFI Block cfiBlock5 Using cfiCommon0
+          CFI NoFunction
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+        MOV       R7,#0x1
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock5
+//   63 
+//   64 /*****************从DHT11读取一个字节函数******************/        
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   65 void  Read_Byte(void)
+Read_Byte:
+          CFI Block cfiBlock6 Using cfiCommon0
+          CFI Function Read_Byte
+        CODE
+//   66 {
+        FUNCALL Read_Byte, Onboard_wait
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_Byte, Onboard_wait
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_Byte, Onboard_wait
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 9, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 9, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        MOV       A,#-0x9
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 9)
+        ; Saved register size: 9
+        ; Auto size: 0
+//   67         uchar i;
+//   68         for (i = 0; i < 8; i++)                     //循环8次，读取8bit的数据
+        MOV       R6,#0x8
+//   69         {
+//   70           Overtime_counter = 2;                          //读取并等待DHT11发出的12-14us低电平开始信号
+??Read_Byte_0:
+        MOV       DPTR,#Overtime_counter
+        MOV       A,#0x2
+        MOVX      @DPTR,A
+//   71           P0DIR &= ~0x10;
+        ANL       0xfd,#0xef
+//   72           while ((!DHT11_DATA) && Overtime_counter++);
+??Read_Byte_1:
+        MOV       C,0x80.4
+        JC        ??Read_Byte_2
+        LCALL     ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_0:
+        JNZ       ??Read_Byte_1
+//   73           Delay_10us();
+??Read_Byte_2:
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//   74           Delay_10us();
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//   75           Delay_10us();
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//   76           //  MicroWait(27);                   //26-28us的低电平判断门限
+//   77           bit_value = 0;                          //跳过门限后判断总线是高还是低，高为1，低为0
+        MOV       DPTR,#bit_value
+        CLR       A
+        MOVX      @DPTR,A
+//   78           if(DHT11_DATA)
+        MOV       C,0x80.4
+        JNC       ??Read_Byte_3
+//   79             bit_value = 1;
+        INC       A
+        MOVX      @DPTR,A
+//   80           Overtime_counter=2;                          //等待1bit的电平信号结束，不管是0是1在118us后都变为低电平，否则错误超时
+??Read_Byte_3:
+        MOV       DPTR,#Overtime_counter
+        MOV       A,#0x2
+        MOVX      @DPTR,A
+//   81           while (DHT11_DATA && Overtime_counter++);  //当U8FLAG加到255后溢出为0，跳出循环，并后加加为1
+??Read_Byte_4:
+        MOV       C,0x80.4
+        JNC       ??Read_Byte_5
+        LCALL     ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_1:
+        JNZ       ??Read_Byte_4
+//   82           if (Overtime_counter == 1)
+??Read_Byte_5:
+        MOVX      A,@DPTR
+        XRL       A,#0x1
+        JZ        ??Read_Byte_6
+//   83             break;                           //超时则跳出for循环        
+//   84           comdata <<= 1;                      //左移1位，LSB补0
+//   85           comdata |= bit_value;                  //LSB赋值
+        MOV       DPTR,#bit_value
+        MOVX      A,@DPTR
+        MOV       R0,A
+        MOV       DPTR,#comdata
+        MOVX      A,@DPTR
+        CLR       C
+        RLC       A
+        ORL       A,R0
+        MOVX      @DPTR,A
+//   86         }
+        DEC       R6
+        MOV       A,R6
+        JNZ       ??Read_Byte_0
+//   87 }
+??Read_Byte_6:
+        SJMP      ?Subroutine1
+          CFI EndBlock cfiBlock6
+        REQUIRE P0DIR
+        REQUIRE _A_P0
+//   88 
+//   89 /*****************DHT11读取五个字节函数******************/
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//   90 void Read_DHT11(void)
+Read_DHT11:
+          CFI Block cfiBlock7 Using cfiCommon0
+          CFI Function Read_DHT11
+        CODE
+//   91 {
+        FUNCALL Read_DHT11, Delay_ms
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Onboard_wait
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Onboard_wait
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Onboard_wait
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Onboard_wait
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Read_Byte
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Read_Byte
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Read_Byte
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Read_Byte
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        FUNCALL Read_DHT11, Read_Byte
+        LOCFRAME ISTACK, 2, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 0, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 2, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 0, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        PUSH      DPL
+          CFI DPL0 Frame(CFA_SP, 4)
+          CFI CFA_SP SP+-4
+        PUSH      DPH
+          CFI DPH0 Frame(CFA_SP, 5)
+          CFI CFA_SP SP+-5
+        ; Saved register size: 2
+        ; Auto size: 0
+//   92         uchar checksum;
+//   93         P0DIR |= 0x10;
+        ORL       0xfd,#0x10
+//   94         DHT11_DATA = 0;                //主机拉低18ms
+        CLR       0x80.4
+//   95         // MicroWait(30);
+//   96         Delay_ms(19);
+        ; Setup parameters for call to function Delay_ms
+        MOV       R2,#0x13
+        MOV       R3,#0x0
+        LCALL     `??Delay_ms::?relay`; Banked call to: Delay_ms
+//   97         DHT11_DATA = 1;                //总线由上拉电阻拉高 主机延时20us-40us
+        SETB      0x80.4
+//   98         Delay_10us();
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//   99         Delay_10us();						
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//  100         Delay_10us();
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//  101         Delay_10us(); 
+        ; Setup parameters for call to function Onboard_wait
+        MOV       R2,#0xa
+        MOV       R3,#0x0
+        LCALL     `??Onboard_wait::?relay`; Banked call to: Onboard_wait
+//  102         // MicroWait(30);
+//  103         DHT11_DATA = 1;                //主机转为输入或者输出高电平，DATA线由上拉电阻拉高，准备判断DHT11的响应信号
+        SETB      0x80.4
+//  104         P0DIR &= ~0x10;
+        ANL       0xfd,#0xef
+//  105         if (!DHT11_DATA)                //判断从机是否有低电平响应信号 如不响应则跳出，响应则向下运行        
+        MOV       C,0x80.4
+        JNC       $+5
+        LJMP      ??Read_DHT11_0 & 0xFFFF
+//  106         {
+//  107           Overtime_counter = 2;   //判断DHT11发出的80us的低电平响应信号是否结束
+        MOV       DPTR,#Overtime_counter
+        MOV       A,#0x2
+        MOVX      @DPTR,A
+//  108           while ((!DHT11_DATA)&&Overtime_counter++);
+??Read_DHT11_1:
+        MOV       C,0x80.4
+        JC        ??Read_DHT11_2
+        LCALL     ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_2:
+        JNZ       ??Read_DHT11_1
+//  109           Overtime_counter=2;   //判断DHT11是否发出80us的高电平，如发出则进入数据接收状态
+??Read_DHT11_2:
+        MOV       A,#0x2
+        MOVX      @DPTR,A
+//  110           while ((DHT11_DATA)&&Overtime_counter++);
+??Read_DHT11_3:
+        MOV       C,0x80.4
+        JNC       ??Read_DHT11_4
+        LCALL     ?Subroutine2 & 0xFFFF
+??CrossCallReturnLabel_3:
+        JNZ       ??Read_DHT11_3
+//  111           Read_Byte();                //读取湿度值整数部分的高8bit
+??Read_DHT11_4:
+        ; Setup parameters for call to function Read_Byte
+        LCALL     `??Read_Byte::?relay`; Banked call to: Read_Byte
+//  112           RH_data_H_temp = comdata;
+        MOV       DPTR,#comdata
+        MOVX      A,@DPTR
+        MOV       DPTR,#RH_data_H_temp
+        MOVX      @DPTR,A
+//  113           Read_Byte();                //读取湿度值小数部分的低8bit
+        ; Setup parameters for call to function Read_Byte
+        LCALL     `??Read_Byte::?relay`; Banked call to: Read_Byte
+//  114           RH_data_L_temp = comdata;
+        MOV       DPTR,#comdata
+        MOVX      A,@DPTR
+        MOV       DPTR,#RH_data_L_temp
+        MOVX      @DPTR,A
+//  115           Read_Byte();                //读取温度值整数部分的高8bit
+        ; Setup parameters for call to function Read_Byte
+        LCALL     `??Read_Byte::?relay`; Banked call to: Read_Byte
+//  116           T_data_H_temp = comdata;
+        MOV       DPTR,#comdata
+        MOVX      A,@DPTR
+        MOV       DPTR,#T_data_H_temp
+        MOVX      @DPTR,A
+//  117           Read_Byte();                //读取温度值小数部分的低8bit
+        ; Setup parameters for call to function Read_Byte
+        LCALL     `??Read_Byte::?relay`; Banked call to: Read_Byte
+//  118           T_data_L_temp = comdata;
+        MOV       DPTR,#comdata
+        MOVX      A,@DPTR
+        MOV       DPTR,#T_data_L_temp
+        MOVX      @DPTR,A
+//  119           Read_Byte();                //读取校验和的8bit
+        ; Setup parameters for call to function Read_Byte
+        LCALL     `??Read_Byte::?relay`; Banked call to: Read_Byte
+//  120           checkdata_temp = comdata;
+        MOV       DPTR,#comdata
+        MOVX      A,@DPTR
+        MOV       DPTR,#checkdata_temp
+        MOVX      @DPTR,A
+//  121           P0DIR |= 0x10;
+        ORL       0xfd,#0x10
+//  122           DHT11_DATA = 1;                //读完数据将总线拉高
+        SETB      0x80.4
+//  123           checksum = (T_data_H_temp + T_data_L_temp + RH_data_H_temp + RH_data_L_temp);//进行数据校验
+//  124           if (checksum == checkdata_temp)
+        MOV       DPTR,#RH_data_L_temp
+        MOVX      A,@DPTR
+        MOV       R2,A
+        MOV       DPTR,#RH_data_H_temp
+        MOVX      A,@DPTR
+        MOV       R1,A
+        MOV       DPTR,#T_data_L_temp
+        MOVX      A,@DPTR
+        MOV       R0,A
+        MOV       DPTR,#T_data_H_temp
+        MOVX      A,@DPTR
+        ADD       A,R0
+        ADD       A,R1
+        ADD       A,R2
+        MOV       R0,A
+        MOV       DPTR,#checkdata_temp
+        MOVX      A,@DPTR
+        XRL       A,R0
+        JNZ       ??Read_DHT11_0
+//  125             {
+//  126               RH_data_H = RH_data_H_temp;
+        MOV       DPTR,#RH_data_H_temp
+        MOVX      A,@DPTR
+        MOV       DPTR,#RH_data_H
+        MOVX      @DPTR,A
+//  127               RH_data_L = RH_data_L_temp;
+        MOV       DPTR,#RH_data_L_temp
+        MOVX      A,@DPTR
+        MOV       DPTR,#RH_data_L
+        MOVX      @DPTR,A
+//  128               T_data_H  = T_data_H_temp;
+        MOV       DPTR,#T_data_H_temp
+        MOVX      A,@DPTR
+        MOV       DPTR,#T_data_H
+        MOVX      @DPTR,A
+//  129               T_data_L  = T_data_L_temp;
+        MOV       DPTR,#T_data_L_temp
+        MOVX      A,@DPTR
+        MOV       DPTR,#T_data_L
+        MOVX      @DPTR,A
+//  130               checkdata = checkdata_temp;
+        MOV       DPTR,#checkdata_temp
+        MOVX      A,@DPTR
+        MOV       DPTR,#checkdata
+        MOVX      @DPTR,A
+//  131             }
+//  132         }
+//  133 }
+??Read_DHT11_0:
+        LJMP      ??Subroutine3_0 & 0xFFFF
+          CFI EndBlock cfiBlock7
+        REQUIRE P0DIR
+        REQUIRE _A_P0
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+?Subroutine2:
+          CFI Block cfiCond8 Using cfiCommon0
+          CFI Function Read_Byte
+          CFI Conditional ??CrossCallReturnLabel_0
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI CFA_SP SP+-2
+          CFI CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiCond9 Using cfiCommon0
+          CFI (cfiCond9) Function Read_Byte
+          CFI (cfiCond9) Conditional ??CrossCallReturnLabel_1
+          CFI (cfiCond9) R6 load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI (cfiCond9) VB load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI (cfiCond9) V0 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI (cfiCond9) R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI (cfiCond9) ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI (cfiCond9) ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI (cfiCond9) ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI (cfiCond9) DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI (cfiCond9) DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI (cfiCond9) CFA_SP SP+-2
+          CFI (cfiCond9) CFA_XSP16 add(XSP16, 9)
+          CFI Block cfiCond10 Using cfiCommon0
+          CFI (cfiCond10) Function Read_DHT11
+          CFI (cfiCond10) Conditional ??CrossCallReturnLabel_2
+          CFI (cfiCond10) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond10) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond10) CFA_SP SP+-7
+          CFI Block cfiCond11 Using cfiCommon0
+          CFI (cfiCond11) Function Read_DHT11
+          CFI (cfiCond11) Conditional ??CrossCallReturnLabel_3
+          CFI (cfiCond11) DPL0 Frame(CFA_SP, 4)
+          CFI (cfiCond11) DPH0 Frame(CFA_SP, 5)
+          CFI (cfiCond11) CFA_SP SP+-7
+          CFI Block cfiPicker12 Using cfiCommon1
+          CFI (cfiPicker12) NoFunction
+          CFI (cfiPicker12) Picker
+        MOVX      A,@DPTR
+        MOV       R0,A
+        MOV       A,#0x1
+        ADD       A,R0
+        MOVX      @DPTR,A
+        MOV       A,R0
+        RET
+          CFI EndBlock cfiCond8
+          CFI EndBlock cfiCond9
+          CFI EndBlock cfiCond10
+          CFI EndBlock cfiCond11
+          CFI EndBlock cfiPicker12
+//  134 
+//  135 
+
+        RSEG BANKED_CODE:HUGECODE:NOROOT(0)
+//  136 void getHumiture(uint8 *t,uint8 *h)
+getHumiture:
+          CFI Block cfiBlock13 Using cfiCommon0
+          CFI Function getHumiture
+        CODE
+//  137 {
+        FUNCALL getHumiture, Read_DHT11
+        LOCFRAME ISTACK, 0, STACK
+        LOCFRAME PSTACK, 0, STACK
+        LOCFRAME XSTACK, 10, STACK
+        LOCFRAME IOVERLAY, 0, STATIC
+        LOCFRAME DOVERLAY, 0, STATIC
+        ARGFRAME ISTACK, 0, STACK
+        ARGFRAME PSTACK, 0, STACK
+        ARGFRAME XSTACK, 10, STACK
+        ARGFRAME IOVERLAY, 0, STATIC
+        ARGFRAME DOVERLAY, 0, STATIC
+        REQUIRE ?V0
+        REQUIRE ?V1
+        MOV       A,#-0xa
+        LCALL     ?BANKED_ENTER_XDATA
+          CFI DPH0 load(1, XDATA, add(CFA_XSP16, literal(-1)))
+          CFI DPL0 load(1, XDATA, add(CFA_XSP16, literal(-2)))
+          CFI ?BRET_EXT load(1, XDATA, add(CFA_XSP16, literal(-3)))
+          CFI ?RET_HIGH load(1, XDATA, add(CFA_XSP16, literal(-4)))
+          CFI ?RET_LOW load(1, XDATA, add(CFA_XSP16, literal(-5)))
+          CFI R7 load(1, XDATA, add(CFA_XSP16, literal(-6)))
+          CFI V1 load(1, XDATA, add(CFA_XSP16, literal(-7)))
+          CFI V0 load(1, XDATA, add(CFA_XSP16, literal(-8)))
+          CFI VB load(1, XDATA, add(CFA_XSP16, literal(-9)))
+          CFI R6 load(1, XDATA, add(CFA_XSP16, literal(-10)))
+          CFI CFA_SP SP+0
+          CFI CFA_XSP16 add(XSP16, 10)
+        ; Saved register size: 10
+        ; Auto size: 0
+        MOV       ?V0,R2
+        MOV       ?V1,R3
+        MOV       A,R4
+        MOV       R6,A
+        MOV       A,R5
+        MOV       R7,A
+//  138 	Read_DHT11();//调用温湿度读取子程序
+        ; Setup parameters for call to function Read_DHT11
+        LCALL     `??Read_DHT11::?relay`; Banked call to: Read_DHT11
+//  139 	//sprintf(str, "%d%d", T_data_H, RH_data_H);
+//  140         *t = T_data_H;
+        MOV       DPTR,#T_data_H
+        MOVX      A,@DPTR
+        MOV       DPL,?V0
+        MOV       DPH,?V1
+        MOVX      @DPTR,A
+//  141         *h = RH_data_H;
+        MOV       DPTR,#RH_data_H
+        MOVX      A,@DPTR
+        MOV       DPL,R6
+        MOV       DPH,R7
+        MOVX      @DPTR,A
+//  142 }
+        MOV       R7,#0x2
+        LJMP      ?BANKED_LEAVE_XDATA
+          CFI EndBlock cfiBlock13
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??Delay_us::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    Delay_us
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??Delay_10us::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    Delay_10us
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??Delay_ms::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    Delay_ms
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??Read_Byte::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    Read_Byte
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??Read_DHT11::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    Read_DHT11
+
+        RSEG BANK_RELAYS:CODE:REORDER:NOROOT(0)
+`??getHumiture::?relay`:
+        CODE
+        LCALL   ?BDISPATCH
+        DATA24
+        DC24    getHumiture
+
+        END
+// 
+// 437 bytes in segment BANKED_CODE
+//  36 bytes in segment BANK_RELAYS
+//   2 bytes in segment SFR_AN
+//  15 bytes in segment XDATA_Z
+// 
+//  36 bytes of CODE     memory
+//   0 bytes of DATA     memory (+ 2 bytes shared)
+// 437 bytes of HUGECODE memory
+//  15 bytes of XDATA    memory
+//
+//Errors: none
+//Warnings: none

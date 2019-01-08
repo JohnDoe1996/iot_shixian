@@ -1,0 +1,10 @@
+<!--pages/indoor/indoor-lv/indoor-lv.wxml-->
+<!--<text>pages/indoor/indoor-lv/indoor-lv.wxml</text>-->
+<view class="title"><text>近期光照强度变化图</text></view>
+<view class="chart">
+    <canvas canvas-id="columnCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>
+<view class="title"><text>近期噪声占比图</text></view>
+<view class="chart">
+    <canvas canvas-id="ringCanvas" disable-scroll="true" class="canvas"></canvas>
+</view>

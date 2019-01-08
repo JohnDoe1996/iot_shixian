@@ -1,0 +1,67 @@
+<!-- pages/indoor/indoor.wxml -->
+<swiper indicator-dots='true' vertical='{{false}}' autoplay='true' interval='5000' circular='true'>
+    <swiper-item>
+        <image src="/images/indoor-images/banner1.jpg" data-post-id="1"></image>
+    </swiper-item>
+    <swiper-item>
+        <image src="/images/indoor-images/banner2.jpg" data-post-id="2"></image>
+    </swiper-item>
+    <swiper-item>
+        <image src="/images/indoor-images/banner3.jpg" data-post-id="3"></image>
+    </swiper-item>
+    <swiper-item>
+        <image src="/images/indoor-images/banner4.jpg" data-post-id="4"></image>
+    </swiper-item>
+    <swiper-item>
+        <image src="/images/indoor-images/banner5.jpg" data-post-id="5"></image>
+    </swiper-item>
+</swiper>
+<image class="userinfo-avatar" src="{{userLogo}}"></image>
+<view id="user">
+    <text id="user-name">{{userName}}</text>
+</view>
+<view id="control">
+    <view id="control-light" data-post-id="0" catchtap="onTurnSwitch">
+        <text>LED灯</text>
+        <view wx:if="{{switchTurn[0]}}">
+            <image class="switch" src="/images/switch/switch_on.png"></image>
+        </view>
+        <view wx:else>
+            <image class="switch" src="/images/switch/switch_off.png"></image>
+        </view>
+    </view>
+    <view id="control-fan" data-post-id="1" catchtap="onTurnSwitch">
+        <text>风扇</text>
+        <view wx:if="{{switchTurn[1]}}">
+            <image class="switch" src="/images/switch/switch_on.png"></image>
+        </view>
+        <view wx:else>
+            <image class="switch" src="/images/switch/switch_off.png"></image>
+        </view>
+    </view>
+    <view id="control-humidifier" data-post-id="2" catchtap="onTurnSwitch">
+        <text>加湿器</text>
+        <view wx:if="{{switchTurn[2]}}">
+            <image class="switch" src="/images/switch/switch_on.png"></image>
+        </view>
+        <view wx:else>
+            <image class="switch" src="/images/switch/switch_off.png"></image>
+        </view>
+    </view>
+</view>
+<view id="iot">
+    <view id="th" catchtap="onJumpTH">
+        <view>
+            <view><text class="iotText" id="t-text">温度：{{tValue}}℃</text></view>
+            <view><text class="iotText" id="h-text">湿度：{{hValue}}%RH</text></view>
+        </view>
+        <view><image class="iotImg" id="th-image" src="/images/temperature.png"></image></view>
+    </view>
+    <view id="lv"  catchtap="onJumpLV">
+        <view><image class="iotImg" id="lv-image" src="/images/bulb.png"></image></view>
+        <view>
+            <view><text class="iotText" id="t-text">光照：{{lValue}}%</text></view>
+            <view><text class="iotText" id="h-text">声量：{{vValue}}</text></view>
+        </view>
+    </view>
+</view>

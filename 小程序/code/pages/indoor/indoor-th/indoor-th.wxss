@@ -1,0 +1,17 @@
+/* pages/indoor/indoor-th/indoor-th.wxss */
+.title{
+    width: 100%;
+    margin-top: 5rpx;
+    margin-bottom: 5rpx;
+    display: flex;
+    justify-content: center;
+}
+
+text {
+    font-weight: bold;
+}
+
+.canvas {
+    width: 100%;
+    height: 1100rpx;
+}

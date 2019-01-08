@@ -1,0 +1,264 @@
+###############################################################################
+#
+# IAR C/C++ Compiler V10.10.1.4655 for 8051               10/Jun/2018  17:53:42
+# Copyright 2004-2017 IAR Systems AB.
+# Standalone license - IAR Embedded Workbench for 8051
+#
+#    Core               =  plain
+#    Code model         =  banked
+#    Data model         =  large
+#    Calling convention =  xdata reentrant
+#    Constant location  =  data_rom
+#    Dptr setup         =  1,16
+#                          
+#    Source file        =  
+#        D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\Source\light.c
+#    Command line       =  
+#        -f C:\Users\John_Doe\AppData\Local\Temp\EW54FD.tmp ("D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\Source\light.c"
+#        -D NWK_AUTO_POLL -D ZTOOL_P1 -D RFD_RCVC_ALWAYS_ON=TRUE -D xMT_TASK -D
+#        xMT_SYS_FUNC -D MT_ZDO_FUNC -D xLCD_SUPPORTED=DEBUG -D xPOWER_SAVING
+#        -lC "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\List"
+#        -lA "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\List"
+#        --diag_suppress Pe001,Pa010 -o "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\Obj"
+#        -e --debug --core=plain --dptr=16,1 --data_model=large
+#        --code_model=banked --calling_convention=xdata_reentrant
+#        --place_constants=data_rom --nr_virtual_regs 8 -f "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wEndev.cfg"
+#        (-DCPU32MHZ -DROOT=__near_func -DMAC_CFG_TX_DATA_MAX=3
+#        -DMAC_CFG_TX_MAX=6 -DMAC_CFG_RX_MAX=3) -f "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\Tools\CC2530DB\f8wConfig.cfg"
+#        (-DZIGBEEPRO -DSECURE=0 -DZG_SECURE_DYNAMIC=0 -DREFLECTOR
+#        -DDEFAULT_CHANLIST=0x07FFF800 -DZDAPP_CONFIG_PAN_ID=0x0127
+#        -DNWK_START_DELAY=100 -DEXTENDED_JOINING_RANDOM_MASK=0x007F
+#        -DBEACON_REQUEST_DELAY=100 -DBEACON_REQ_DELAY_MASK=0x00FF
+#        -DLINK_STATUS_JITTER_MASK=0x007F -DROUTE_EXPIRY_TIME=30
+#        -DAPSC_ACK_WAIT_DURATION_POLLED=3000 -DNWK_INDIRECT_MSG_TIMEOUT=7
+#        -DMAX_RREQ_ENTRIES=8 -DAPSC_MAX_FRAME_RETRIES=3
+#        -DNWK_MAX_DATA_RETRIES=2 -DMAX_POLL_FAILURE_RETRIES=2 -DMAX_BCAST=9
+#        -DAPS_MAX_GROUPS=16 -DMAX_RTG_ENTRIES=40 -DNWK_MAX_BINDING_ENTRIES=4
+#        -DMAX_BINDING_CLUSTER_IDS=4 "-DDEFAULT_KEY={0x01, 0x03, 0x05, 0x07,
+#        0x09, 0x0B, 0x0D, 0x0F, 0x00, 0x02, 0x04, 0x06, 0x08, 0x0A, 0x0C,
+#        0x0D}" -DMAC_MAX_FRAME_SIZE=116 -DZDNWKMGR_MIN_TRANSMISSIONS=20
+#        "-DCONST=const __code" -DGENERIC=__generic -DRFD_RCVC_ALWAYS_ON=FALSE
+#        -DPOLL_RATE=1000 -DQUEUED_POLL_RATE=100 -DRESPONSE_POLL_RATE=100
+#        -DREJOIN_POLL_RATE=440) -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\Source\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\ZMain\TI2530DB\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\hal\include\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\hal\target\CC2530EB\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\include\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\high_level\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mac\low_level\srf04\single_chip\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\mt\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\osal\include\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\services\saddr\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\services\sdata\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\af\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\nwk\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\sapi\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\sec\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\sys\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\stack\zdo\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\zmac\"
+#        -I "D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\..\..\..\..\..\Components\zmac\f8w\"
+#        -Ohz --require_prototypes --no_code_motion)
+#    Locale             =  Chinese (Simplified)_China.936
+#    List file          =  
+#        D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\List\light.lst
+#    Object file        =  
+#        D:\Texas
+#        Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\CC2530DB\SensorDevice\Obj\light.r51
+#
+###############################################################################
+
+D:\Texas Instruments\ZStack-CC2530-2.5.1a\Projects\zstack\Samples\ClassDesignApp\Source\light.c
+      1          #include "ioCC2530.h"
+
+   \                                 In  segment SFR_AN, at 0x88
+   \   union <unnamed> volatile __sfr _A_TCON
+   \                     _A_TCON:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xb6
+   \   unsigned char volatile __sfr ADCCON3
+   \                     ADCCON3:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xba
+   \   unsigned char volatile __sfr ADCL
+   \                     ADCL:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xbb
+   \   unsigned char volatile __sfr ADCH
+   \                     ADCH:
+   \   000000                DS 1
+
+   \                                 In  segment SFR_AN, at 0xf2
+   \   unsigned char volatile __sfr APCFG
+   \                     APCFG:
+   \   000000                DS 1
+      2          #include "stdio.h"
+      3          #include "light.h"
+      4          
+      5          #define uchar unsigned char 
+      6          #define uint unsigned int
+      7          
+      8          #define ADC_CHNN    0x05  //选用通道5
+      9          
+     10          /********************************************************
+     11           * @brief   读取ADC的值
+     12          ********************************************************/
+     13          static uint16 readAdc(uint8 channal)
+     14          {
+     15                    uint16 value ; 
+     16                    APCFG |= 1 << channal ; // 模拟信号设置
+     17                    ADCIF = 0 ;
+     18                   
+     19                    ADCCON3 = channal;          
+     20                    while ( !ADCIF ) ;  //等待转换完成
+     21                    
+     22                    value = ADCL ;
+     23                    value |= ((uint16) ADCH) << 8 ;
+     24                    
+     25                    return value; 
+     26          }
+     27          
+     28          
+
+   \                                 In  segment BANKED_CODE, align 1, keep-with-next
+     29          uint8 getLight(void)
+   \                     getLight:
+     30          {
+   \   000000   74F7         MOV       A,#-0x9
+   \   000002   12....       LCALL     ?BANKED_ENTER_XDATA
+   \   000005                ; Saved register size: 9
+   \   000005                ; Auto size: 0
+     31              uint AvgValue = 0;
+   \   000005   7800         MOV       R0,#0x0
+   \   000007   7900         MOV       R1,#0x0
+     32              uint8 result;
+     33              int i;
+     34              for (i = 0 ; i < 64 ; i++)
+   \   000009   7C40         MOV       R4,#0x40
+     35              {
+     36                AvgValue += readAdc(ADC_CHNN);             
+     37                AvgValue >>= 1;
+   \                     ??getLight_0:
+   \   00000B   43F220       ORL       0xf2,#0x20
+   \   00000E   C28D         CLR       0x88.5
+   \   000010   75B605       MOV       0xb6,#0x5
+   \                     ??getLight_1:
+   \   000013   A28D         MOV       C,0x88.5
+   \   000015   50FC         JNC       ??getLight_1
+   \   000017   E5BA         MOV       A,0xba+0x0
+   \   000019   ABBB         MOV       R3,0xbb
+   \   00001B   FA           MOV       R2,A
+   \   00001C   E8           MOV       A,R0
+   \   00001D   2A           ADD       A,R2
+   \   00001E   F8           MOV       R0,A
+   \   00001F   E9           MOV       A,R1
+   \   000020   3B           ADDC      A,R3
+   \   000021   C3           CLR       C
+   \   000022   13           RRC       A
+   \   000023   F9           MOV       R1,A
+   \   000024   E8           MOV       A,R0
+   \   000025   13           RRC       A
+   \   000026   F8           MOV       R0,A
+     38              }
+   \   000027   1C           DEC       R4
+   \   000028   EC           MOV       A,R4
+   \   000029   70E0         JNZ       ??getLight_0
+     39          
+     40              result = (uint8)(96-(((AvgValue-500)/1000)*3));
+     41          
+     42              return result;
+   \   00002B   E8           MOV       A,R0
+   \   00002C   240C         ADD       A,#0xc
+   \   00002E   F8           MOV       R0,A
+   \   00002F   E9           MOV       A,R1
+   \   000030   34FE         ADDC      A,#-0x2
+   \   000032   F9           MOV       R1,A
+   \   000033   7AE8         MOV       R2,#-0x18
+   \   000035   7B03         MOV       R3,#0x3
+   \   000037   12....       LCALL     ?US_DIV_MOD
+   \   00003A   E8           MOV       A,R0
+   \   00003B   75F003       MOV       B,#0x3
+   \   00003E   A4           MUL       AB
+   \   00003F   F8           MOV       R0,A
+   \   000040   7460         MOV       A,#0x60
+   \   000042   98           SUBB      A,R0
+   \   000043   F9           MOV       R1,A
+   \   000044   7F01         MOV       R7,#0x1
+   \   000046   02....       LJMP      ?BANKED_LEAVE_XDATA
+   \   000049                REQUIRE APCFG
+   \   000049                REQUIRE _A_TCON
+   \   000049                REQUIRE ADCCON3
+   \   000049                REQUIRE ADCL
+   \   000049                REQUIRE ADCH
+     43          
+     44          }
+
+   \                                 In  segment BANK_RELAYS, align 1
+   \                     `??getLight::?relay`:
+   \   000000   12....       LCALL   ?BDISPATCH
+   \   000003   ......       DC24    getLight
+
+   Maximum stack usage in bytes:
+
+   ISTACK XSTACK Function
+   ------ ------ --------
+      1      9   getLight
+
+
+   Segment part sizes:
+
+   Bytes  Function/Label
+   -----  --------------
+       1  ADCCON3
+       1  ADCH
+       1  ADCL
+       1  APCFG
+       1  _A_TCON
+      73  getLight
+       6  getLight::?relay
+
+ 
+ 73 bytes in segment BANKED_CODE
+  6 bytes in segment BANK_RELAYS
+  5 bytes in segment SFR_AN
+ 
+  6 bytes of CODE     memory
+  0 bytes of DATA     memory (+ 5 bytes shared)
+ 73 bytes of HUGECODE memory
+
+Errors: none
+Warnings: none

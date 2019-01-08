@@ -1,0 +1,38 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/indoor/indoor",
+    "pages/outdoor/outdoor",
+    "pages/outdoor/outdoor-today/outdoor-today",
+    "pages/outdoor/outdoor-future/outdoor-future",
+    "pages/indoor/indoor-th/indoor-th",
+    "pages/indoor/indoor-lv/indoor-lv"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#b8b8b8",
+    "navigationBarTitleText": "物联网",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "borderStyle": "white",
+    "selectedColor": "#ff800A",
+    "color": "black",
+    "backgroundColor": "#fff",
+    "position": "bottom",
+    "list": [
+      {
+        "pagePath": "pages/indoor/indoor",
+        "text": "室内",
+        "iconPath": "images/tabBar/house_close.png",
+        "selectedIconPath": "images/tabBar/house_open.png"
+      },
+      {
+        "pagePath": "pages/outdoor/outdoor",
+        "text": "室外",
+        "iconPath": "images/tabBar/sun_close.png",
+        "selectedIconPath": "images/tabBar/sun_open.png"
+      }
+    ]
+  }
+}

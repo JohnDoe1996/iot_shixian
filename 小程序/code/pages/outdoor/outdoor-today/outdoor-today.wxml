@@ -1,0 +1,31 @@
+<!--pages/outdoor/outdoor-today/outdoor-today.wxml-->
+<!--<text>pages/outdoor/outdoor-today/outdoor-today.wxml</text>-->
+<view>
+  <!--天气实况-->
+  <view class="msgPanel">
+    <view class="nowPanel">
+      <view class="nowTime">
+        <text>{{location}} </text>
+        <text>{{nowText}} </text>
+        <text>{{temperature}}</text>
+      </view>
+      <view class="nowText">
+        <text>{{nowTemperature}}</text>        
+      </view>
+    </view>
+  </view>
+  <!--天气实况-->
+</view>
+<view>
+    <view class="ui-panel weather-future">
+      <view class="panel-title">相关指数</view>
+      <view class="panel-content">
+          <view wx:for="{{variousIndex}}" wx:key="*this" class="ui-flex-item">
+            <view class="index-item">
+              <view class="index-item-title">{{item.title}}:{{item.value}}</view>
+              <view class="index-item-des">{{item.desc}}</view>
+            </view>
+          </view>
+      </view>
+    </view>
+</view>

@@ -1,0 +1,4 @@
+<!--pages/indoor/indoor-th/indoor-th.wxml-->
+<!--<text>pages/indoor/indoor-th/indoor-th.wxml</text>-->
+<view class="title"><text>近期温湿度变化图</text></view>
+<canvas canvas-id="lineCanvas" disable-scroll="true" class="canvas"></canvas>
